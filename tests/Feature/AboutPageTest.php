@@ -8,13 +8,11 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class AboutPageTest extends TestCase
 {
-    /**
-     * A basic test example.
-     *
-     * @return void
-     */
-    public function testExample()
+    public function testCanViewAboutPage()
     {
-        $this->assertTrue(true);
+        $resp = $this->get('/about');
+
+        $resp->assertStatus(200);
+        $resp->assertSee('About Me');
     }
 }
