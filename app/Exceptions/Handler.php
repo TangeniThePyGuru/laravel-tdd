@@ -47,8 +47,8 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Exception $exception)
     {
-//        useful for test driven development, allows a=us to view the actual exception before it is rendered.
-        throw $exception;
+//        useful for test driven development, allows us to view the actual exception before it is rendered.
+//        throw $exception;
         return parent::render($request, $exception);
     }
 }

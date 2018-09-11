@@ -34,4 +34,20 @@ class ViewABlogPostTest extends TestCase
         $resp->assertSee($post->created_at->toFormattedDateString());
 
     }
+
+    /**
+     * @group post-not-found
+     *
+     * @return [type] [description]
+     */
+
+    public function testViewA404PageWhenPostIsNotFound()
+    {
+        // action
+        $resp = $this->get("/posts/INVALID_ID");
+        // assert
+        $resp->assertStatus(404);
+        $resp->assertSee('The page you are looking for could not be found');
+
+    }
 }
