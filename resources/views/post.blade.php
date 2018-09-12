@@ -2,5 +2,5 @@
 
 {{ $post->body }}
 
-{{ $post->created_at->toFormattedDateString() }}
+{{ $post->createdAt() }}
 

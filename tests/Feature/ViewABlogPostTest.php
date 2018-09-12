@@ -12,6 +12,9 @@ class ViewABlogPostTest extends TestCase
 {
     use DatabaseMigrations;
 
+    /**
+     * @group view-post
+     */
     public function testCanViewABlogPost()
     {
         // Arrangement
@@ -38,7 +41,6 @@ class ViewABlogPostTest extends TestCase
     /**
      * @group post-not-found
      *
-     * @return [type] [description]
      */
 
     public function testViewA404PageWhenPostIsNotFound()
@@ -49,5 +51,24 @@ class ViewABlogPostTest extends TestCase
         $resp->assertStatus(404);
         $resp->assertSee('The page you are looking for could not be found');
 
+    }
+
+    /**
+     * @group formatted-date
+     */
+    public function testCaGetCreatedAtFormattedDate()
+    {
+        // arrange
+        // create a post
+        $post = Post::create([
+            'title' => 'A simple title',
+            'body' => 'A simple body'
+        ]);
+        // act
+        // get the value by calling the method
+        $formattedDate = $post->createdAt();
+        // assert
+        // assert that value returned is as we expected
+        $this->assertEquals($post->created_at->toFormattedDateString(), $formattedDate);
     }
 }
