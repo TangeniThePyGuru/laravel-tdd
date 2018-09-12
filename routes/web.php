@@ -19,4 +19,4 @@ Route::get('/about', function (){
     return view('about');
 });
 
-Route::get('/posts/{id}', 'PostsController@index');
+Route::resource('/posts', 'PostsController');
