@@ -30,4 +30,15 @@ class CreatePostTest extends DuskTestCase
                 ->assertSee('New Body');
         });
     }
+
+    /**
+     * @group create-post-auth
+     */
+    public function testOnlyAuthUserCanCreatePost()
+    {
+        $this->browse(function (Browser $browser) {
+            $browser->visit('/posts/create')
+                ->assertPathIs('/login');
+        });
+    }
 }
