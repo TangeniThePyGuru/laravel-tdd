@@ -23,6 +23,10 @@ class PostsController extends Controller
 
     }
 
+    public function create()
+    {
+        return view('create');
+    }
 
     public function store(Request $request)
     {
@@ -36,6 +40,8 @@ class PostsController extends Controller
             'title' => $request->title,
             'body' => $request->body
         ]);
+
+        return redirect('/posts');
     }
 
     public function show($id)
